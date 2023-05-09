@@ -20,7 +20,7 @@ export default function CartPage() {
 
   const updateCartHandler = (item: CartItem, quantity: number) => {
     if (item.countInStock < quantity) {
-      toast.warn("Sorry. Product is out of stock");
+      toast.warn("Desculpa, esse item está fora de estoque!");
       return;
     }
     dispatch({
@@ -38,14 +38,14 @@ export default function CartPage() {
   return (
     <div>
       <Helmet>
-        <title>Shopping Cart</title>
+        <title>Carrinho de compras</title>
       </Helmet>
-      <h1>Shopping Cart</h1>
+      <h1>Carrinho de compras</h1>
       <Row>
         <Col md={8}>
           {cartItems.length === 0 ? (
             <MessageBox>
-              Cart is empty. <Link to="/">Go Shopping</Link>
+              Seu carrinho está vazio! <Link to="/">Fazer compras</Link>
             </MessageBox>
           ) : (
             <ListGroup>
@@ -115,7 +115,7 @@ export default function CartPage() {
                       onClick={checkoutHandler}
                       disabled={cartItems.length === 0}
                     >
-                      Proceed to Checkout
+                      Continuar para o pagamento
                     </Button>
                   </div>
                 </ListGroup.Item>

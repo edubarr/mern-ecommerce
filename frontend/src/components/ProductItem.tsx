@@ -41,13 +41,13 @@ function ProductItem({ product }: { product: Product }) {
         <Card.Text>${product.price}</Card.Text>
         {product.countInStock === 0 ? (
           <Button variant="light" disabled>
-            Out of stock
+            Sem estoque
           </Button>
         ) : (
           <Button
             onClick={() => addToCartHandler(convertProductToCartItem(product))}
           >
-            Add to cart
+            Adicionar ao carrinho
           </Button>
         )}
       </Card.Body>

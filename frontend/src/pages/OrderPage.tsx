@@ -88,7 +88,7 @@ export default function OrderPage() {
         try {
           await payOrder({ orderId: orderId!, ...details });
           refetch();
-          toast.success("Order is paid successfully");
+          toast.success("Pedido pago com sucesso!");
         } catch (err) {
           toast.error(getError(err as ApiError));
         }
@@ -104,46 +104,46 @@ export default function OrderPage() {
   ) : error ? (
     <MessageBox variant="danger">{getError(error as ApiError)}</MessageBox>
   ) : !order ? (
-    <MessageBox variant="danger">Order Not Found</MessageBox>
+    <MessageBox variant="danger">Pedido não encontrado!</MessageBox>
   ) : (
     <div>
       <Helmet>
-        <title>Order {orderId}</title>
+        <title>Pedido {orderId}</title>
       </Helmet>
-      <h1 className="my-3">Order {orderId}</h1>
+      <h1 className="my-3">Pedido {orderId}</h1>
       <Row>
         <Col md={8}>
           <Card className="mb-3">
             <Card.Body>
-              <Card.Title>Shipping</Card.Title>
+              <Card.Title>Envio</Card.Title>
               <Card.Text>
-                <strong>Name:</strong> {order.shippingAddress.fullName} <br />
-                <strong>Address: </strong> {order.shippingAddress.address},
+                <strong>Nome:</strong> {order.shippingAddress.fullName} <br />
+                <strong>Endereço: </strong> {order.shippingAddress.address},
                 {order.shippingAddress.city}, {order.shippingAddress.postalCode}
                 ,{order.shippingAddress.country}
               </Card.Text>
               {order.isDelivered ? (
                 <MessageBox variant="success">
-                  Delivered at {order.deliveredAt}
+                  Entregue em {order.deliveredAt}
                 </MessageBox>
               ) : (
-                <MessageBox variant="warning">Not Delivered</MessageBox>
+                <MessageBox variant="warning">Não entregue</MessageBox>
               )}
             </Card.Body>
           </Card>
 
           <Card className="mb-3">
             <Card.Body>
-              <Card.Title>Payment</Card.Title>
+              <Card.Title>Pagamento</Card.Title>
               <Card.Text>
-                <strong>Method:</strong> {order.paymentMethod}
+                <strong>Método:</strong> {order.paymentMethod}
               </Card.Text>
               {order.isPaid ? (
                 <MessageBox variant="success">
-                  Paid at {order.paidAt}
+                  Pago em {order.paidAt}
                 </MessageBox>
               ) : (
-                <MessageBox variant="warning">Not Paid</MessageBox>
+                <MessageBox variant="warning">Não pago</MessageBox>
               )}
             </Card.Body>
           </Card>
@@ -177,7 +177,7 @@ export default function OrderPage() {
         <Col md={4}>
           <Card className="mb-3">
             <Card.Body>
-              <Card.Title>Order Summary</Card.Title>
+              <Card.Title>Pedidos</Card.Title>
               <ListGroup variant="flush">
                 <ListGroup.Item>
                   <Row>
@@ -187,20 +187,20 @@ export default function OrderPage() {
                 </ListGroup.Item>
                 <ListGroup.Item>
                   <Row>
-                    <Col>Shipping</Col>
+                    <Col>Envio</Col>
                     <Col>${order.shippingPrice.toFixed(2)}</Col>
                   </Row>
                 </ListGroup.Item>
                 <ListGroup.Item>
                   <Row>
-                    <Col>Tax</Col>
+                    <Col>Impostos</Col>
                     <Col>${order.taxPrice.toFixed(2)}</Col>
                   </Row>
                 </ListGroup.Item>
                 <ListGroup.Item>
                   <Row>
                     <Col>
-                      <strong> Order Total</strong>
+                      <strong> Total do pedido</strong>
                     </Col>
                     <Col>
                       <strong>${order.totalPrice.toFixed(2)}</strong>
@@ -213,7 +213,7 @@ export default function OrderPage() {
                       <LoadingBox />
                     ) : isRejected ? (
                       <MessageBox variant="danger">
-                        Error in connecting to PayPal
+                        Erro ao se conectar com o Paypal!
                       </MessageBox>
                     ) : (
                       <div>

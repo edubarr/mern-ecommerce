@@ -14,10 +14,10 @@ export default function OrderHistoryPage() {
   return (
     <div>
       <Helmet>
-        <title>Order History</title>
+        <title>Pedidos</title>
       </Helmet>
 
-      <h1>Order History</h1>
+      <h1>Histórico de Pedidos</h1>
       {isLoading ? (
         <LoadingBox></LoadingBox>
       ) : error ? (
@@ -27,11 +27,11 @@ export default function OrderHistoryPage() {
           <thead>
             <tr>
               <th>ID</th>
-              <th>DATE</th>
+              <th>DATA</th>
               <th>TOTAL</th>
-              <th>PAID</th>
-              <th>DELIVERED</th>
-              <th>ACTIONS</th>
+              <th>PAGO</th>
+              <th>ENTREGUE</th>
+              <th>AÇÕES</th>
             </tr>
           </thead>
           <tbody>
@@ -54,7 +54,7 @@ export default function OrderHistoryPage() {
                       navigate(`/order/${order._id}`);
                     }}
                   >
-                    Details
+                    Detalhes
                   </Button>
                 </td>
               </tr>

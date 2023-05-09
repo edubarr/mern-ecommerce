@@ -60,7 +60,7 @@ export default function SigninPage() {
           />
         </Form.Group>
         <Form.Group className="mb-3" controlId="password">
-          <Form.Label>Password</Form.Label>
+          <Form.Label>Senha</Form.Label>
           <Form.Control
             type="password"
             required
@@ -74,8 +74,8 @@ export default function SigninPage() {
           {isLoading && <LoadingBox />}
         </div>
         <div className="mb-3">
-          New customer?{" "}
-          <Link to={`/signup?redirect=${redirect}`}>Create your account</Link>
+          Novo cliente?{" "}
+          <Link to={`/signup?redirect=${redirect}`}>Criar nova conta</Link>
         </div>
       </Form>
     </Container>
